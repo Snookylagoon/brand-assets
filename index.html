@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Brand Assets</title>
+<style>
+  :root {
+    --ink: #16181d;
+    --muted: #6b7280;
+    --line: #e4e7ec;
+    --page: #f6f7f9;
+    --card: #ffffff;
+    --dark-swatch: #1c1f26;
+    --accent: #2f6df6;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 16px 72px;
+    background: var(--page);
+    color: var(--ink);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  header { padding: 48px 0 8px; }
+  h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: -0.01em; }
+  .lede { margin: 0; color: var(--muted); max-width: 60ch; }
+  .note {
+    margin: 24px 0 0; padding: 14px 16px;
+    background: #fff8e6; border: 1px solid #f2dfae;
+    border-radius: var(--radius); font-size: 14px; color: #6b5514;
+  }
+  h2 {
+    margin: 48px 0 16px; padding-bottom: 8px;
+    font-size: 19px; letter-spacing: -0.01em;
+    border-bottom: 1px solid var(--line);
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); margin-bottom: 18px; overflow: hidden;
+  }
+  .card-head {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    align-items: baseline; justify-content: space-between;
+    padding: 14px 16px; border-bottom: 1px solid var(--line);
+  }
+  .variant { font-weight: 600; font-size: 15px; }
+  .dims { color: var(--muted); font-size: 13px; }
+  .swatches { display: grid; grid-template-columns: 1fr 1fr; }
+  .swatch {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 150px; padding: 24px;
+  }
+  .swatch.light { background: #ffffff; }
+  .swatch.dark  { background: var(--dark-swatch); border-left: 1px solid var(--line); }
+  .swatch img { max-width: 100%; height: auto; display: block; }
+  .swatch-label {
+    grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted); border-top: 1px solid var(--line);
+  }
+  .swatch-label span { padding: 6px 16px; }
+  .swatch-label span + span { border-left: 1px solid var(--line); }
+  .urlbar {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    padding: 12px 16px; border-top: 1px solid var(--line); background: #fbfbfc;
+  }
+  .url {
+    flex: 1 1 320px; min-width: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12.5px; color: #374151; word-break: break-all;
+  }
+  button {
+    flex: 0 0 auto; cursor: pointer;
+    padding: 7px 14px; border: 1px solid var(--accent);
+    border-radius: 7px; background: var(--accent); color: #fff;
+    font-size: 13px; font-weight: 600; font-family: inherit;
+  }
+  button:hover { filter: brightness(1.07); }
+  button.done { background: #15803d; border-color: #15803d; }
+  .empty {
+    padding: 32px 16px; text-align: center; color: var(--muted);
+    background: var(--card); border: 1px dashed var(--line);
+    border-radius: var(--radius);
+  }
+  footer { margin-top: 56px; color: var(--muted); font-size: 13px; }
+  @media (max-width: 560px) {
+    .swatches, .swatch-label { grid-template-columns: 1fr; }
+    .swatch.dark { border-left: 0; border-top: 1px solid var(--line); }
+    .swatch-label span + span { border-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Brand Assets</h1>
+    <p class="lede">
+      Logos published as PNG for use in HTML email signatures. Each logo is shown on a
+      white and a dark background so you can check that it reads correctly on both.
+      Use the <strong>Copy URL</strong> button to copy the exact address to paste into
+      your signature.
+    </p>
+    <p class="note">
+      <strong>Never rename, move or delete a published logo.</strong> Every email already
+      sent links to its exact address. To update a logo, replace the file under the same name.
+    </p>
+  </header>
+
+  <main id="output"></main>
+
+  <footer>
+    Published from the <code>main</code> branch of
+    <code>Snookylagoon/brand-assets</code> via GitHub Pages.
+  </footer>
+
+</div>
+
+<script>
+// ---------------------------------------------------------------------------
+// The list of published logos.
+//
+// To add a logo: upload the PNG to logos/<slug>/<slug>-<variant>.png, then add
+// one line below. To remove a logo from this page, delete its line here — but
+// NEVER delete the PNG file itself, because sent emails still link to it.
+//
+//   company     Company name as you want it to appear as a heading.
+//   slug        Folder name. Also the first part of every file name.
+//   variant     The bit after the slug in the file name, e.g. "logo", "icon".
+//   label       Plain-English description shown on the card.
+//   display     Width in pixels to use in the email HTML (half the file width).
+// ---------------------------------------------------------------------------
+const LOGOS = [
+  { company: "Marcus Solomon Management", slug: "marcus-solomon", variant: "logo", label: "Full logo", display: 200 },
+];
+
+const BASE = location.origin + location.pathname.replace(/\/?(index\.html)?$/, "/");
+
+function urlFor(item) {
+  return BASE + "logos/" + item.slug + "/" + item.slug + "-" + item.variant + ".png";
+}
+
+function copyToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  }
+  // Fallback for older browsers served over plain HTTP.
+  return new Promise(function (resolve, reject) {
+    const field = document.createElement("textarea");
+    field.value = text;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.opacity = "0";
+    document.body.appendChild(field);
+    field.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(field);
+    ok ? resolve() : reject(new Error("Copy was blocked by the browser"));
+  });
+}
+
+function buildCard(item) {
+  const url = urlFor(item);
+  const alt = item.company + " logo";
+
+  const card = document.createElement("section");
+  card.className = "card";
+
+  const head = document.createElement("div");
+  head.className = "card-head";
+  const name = document.createElement("span");
+  name.className = "variant";
+  name.textContent = item.label || item.variant;
+  const dims = document.createElement("span");
+  dims.className = "dims";
+  dims.textContent = "Display at " + item.display + " px wide (file is " + (item.display * 2) + " px)";
+  head.append(name, dims);
+
+  const swatches = document.createElement("div");
+  swatches.className = "swatches";
+  ["light", "dark"].forEach(function (tone) {
+    const cell = document.createElement("div");
+    cell.className = "swatch " + tone;
+    const img = document.createElement("img");
+    img.src = url;
+    img.alt = alt;
+    img.width = item.display;
+    img.loading = "lazy";
+    cell.appendChild(img);
+    swatches.appendChild(cell);
+  });
+
+  const legend = document.createElement("div");
+  legend.className = "swatch-label";
+  const l1 = document.createElement("span");
+  l1.textContent = "White background";
+  const l2 = document.createElement("span");
+  l2.textContent = "Dark background";
+  legend.append(l1, l2);
+
+  const bar = document.createElement("div");
+  bar.className = "urlbar";
+  const text = document.createElement("code");
+  text.className = "url";
+  text.textContent = url;
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.textContent = "Copy URL";
+  btn.addEventListener("click", function () {
+    copyToClipboard(url).then(function () {
+      btn.textContent = "Copied";
+      btn.classList.add("done");
+    }).catch(function () {
+      btn.textContent = "Press Ctrl/Cmd+C";
+    });
+    setTimeout(function () {
+      btn.textContent = "Copy URL";
+      btn.classList.remove("done");
+    }, 2000);
+  });
+  bar.append(text, btn);
+
+  card.append(head, swatches, legend, bar);
+  return card;
+}
+
+function render() {
+  const out = document.getElementById("output");
+  out.textContent = "";
+
+  if (LOGOS.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = "No logos have been published yet.";
+    out.appendChild(empty);
+    return;
+  }
+
+  // Group the flat list by company, keeping the order they were listed in.
+  const order = [];
+  const groups = new Map();
+  LOGOS.forEach(function (item) {
+    if (!groups.has(item.company)) {
+      groups.set(item.company, []);
+      order.push(item.company);
+    }
+    groups.get(item.company).push(item);
+  });
+
+  order.forEach(function (company) {
+    const heading = document.createElement("h2");
+    heading.textContent = company;
+    out.appendChild(heading);
+    groups.get(company).forEach(function (item) {
+      out.appendChild(buildCard(item));
+    });
+  });
+}
+
+render();
+</script>
+</body>
+</html>
