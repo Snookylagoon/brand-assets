@@ -25,12 +25,9 @@ in someone else's inbox, and the logo turns into a broken-image placeholder.
 ├── index.html                Preview page: every logo, its URL and a copy button
 ├── README.md                 This file
 └── logos/
-    ├── kapiti-management/
-    │   └── kapiti-management-logo.png
-    ├── marcus-solomon/
-    │   └── marcus-solomon-logo.png
-    └── hexagon-holdings/
-        └── hexagon-holdings-logo.png
+    └── marcus-solomon/
+        ├── marcus-solomon-logo.png
+        └── marcus-solomon-logo-white.png
 ```
 
 One folder per company, named with the company slug. Every file inside a company
@@ -48,15 +45,17 @@ logos/<company-slug>/<company-slug>-<variant>.png
 
 | Company | Slug |
 |---|---|
-| Kapiti Management | `kapiti-management` |
 | Marcus Solomon Management | `marcus-solomon` |
-| Hexagon Holdings | `hexagon-holdings` |
+
+Other companies can be added later using the same convention: choose a lowercase,
+hyphenated slug, create a folder of that name under `logos/`, and add a row to this table.
 
 Common variants:
 
 | Variant | Meaning | Published width | Displayed width |
 |---|---|---|---|
 | `logo` | Full logo, for a light or white background | 400 px | 200 px |
+| `logo-white` | Full logo on a solid white background; recommended for email signatures because it stays readable in dark mode | 400 px | 200 px |
 | `logo-dark` | Full logo, for a dark background | 400 px | 200 px |
 | `icon` | Icon or monogram only | 160 px | 80 px |
 
