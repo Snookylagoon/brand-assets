@@ -25,9 +25,13 @@ in someone else's inbox, and the logo turns into a broken-image placeholder.
 ├── index.html                Preview page: every logo, its URL and a copy button
 ├── README.md                 This file
 └── logos/
-    └── marcus-solomon/
-        ├── marcus-solomon-logo.png
-        └── marcus-solomon-logo-white.png
+    ├── marcus-solomon/
+    │   ├── marcus-solomon-logo.png
+    │   └── marcus-solomon-logo-white.png
+    └── vairiot/
+        ├── vairiot-logo-white.png
+        ├── vairiot-icon.png
+        └── vairiot-divider.png
 ```
 
 One folder per company, named with the company slug. Every file inside a company
@@ -46,6 +50,7 @@ logos/<company-slug>/<company-slug>-<variant>.png
 | Company | Slug |
 |---|---|
 | Marcus Solomon Management | `marcus-solomon` |
+| Vairiot | `vairiot` |
 
 Other companies can be added later using the same convention: choose a lowercase,
 hyphenated slug, create a folder of that name under `logos/`, and add a row to this table.
@@ -58,6 +63,7 @@ Common variants:
 | `logo-white` | Full logo on a solid white background; recommended for email signatures because it stays readable in dark mode | 400 px | 200 px |
 | `logo-dark` | Full logo, for a dark background | 400 px | 200 px |
 | `icon` | Icon or monogram only | 160 px | 80 px |
+| `divider` | Thin brand-coloured line used between sections of a signature | 520 × 6 px | 260 × 3 px |
 
 Images are published at **twice** their intended display width so that they stay sharp
 on high-resolution (Retina) screens. Always set `width` and `height` in the email HTML
