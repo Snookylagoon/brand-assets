@@ -51,6 +51,7 @@ logos/<company-slug>/<company-slug>-<variant>.png
 |---|---|
 | Marcus Solomon Management | `marcus-solomon` |
 | Vairiot | `vairiot` |
+| Tsunami Sport Limited | `tsunami-sport` |
 
 Other companies can be added later using the same convention: choose a lowercase,
 hyphenated slug, create a folder of that name under `logos/`, and add a row to this table.
