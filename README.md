@@ -24,14 +24,23 @@ in someone else's inbox, and the logo turns into a broken-image placeholder.
 ├── .nojekyll                 Tells GitHub Pages to serve files exactly as they are
 ├── index.html                Preview page: every logo, its URL and a copy button
 ├── README.md                 This file
+├── signatures/
+│   └── andrew-scott.html     Ready-made signature + install guide for one person
 └── logos/
     ├── marcus-solomon/
     │   ├── marcus-solomon-logo.png
     │   └── marcus-solomon-logo-white.png
-    └── vairiot/
-        ├── vairiot-logo-white.png
-        ├── vairiot-icon.png
-        └── vairiot-divider.png
+    ├── vairiot/
+    │   ├── vairiot-logo-white.png
+    │   ├── vairiot-icon.png
+    │   └── vairiot-divider.png
+    ├── tsunami-sport/
+    │   └── tsunami-sport-logo-white.png
+    └── hexagon-holdings/
+        ├── hexagon-holdings-logo-navy.png
+        ├── hexagon-holdings-logo-white.png
+        ├── hexagon-holdings-icon.png
+        └── hexagon-holdings-divider.png
 ```
 
 One folder per company, named with the company slug. Every file inside a company
@@ -52,6 +61,7 @@ logos/<company-slug>/<company-slug>-<variant>.png
 | Marcus Solomon Management | `marcus-solomon` |
 | Vairiot | `vairiot` |
 | Tsunami Sport Limited | `tsunami-sport` |
+| Hexagon Holdings Limited | `hexagon-holdings` |
 
 Other companies can be added later using the same convention: choose a lowercase,
 hyphenated slug, create a folder of that name under `logos/`, and add a row to this table.
@@ -62,6 +72,7 @@ Common variants:
 |---|---|---|---|
 | `logo` | Full logo, for a light or white background | 400 px | 200 px |
 | `logo-white` | Full logo on a solid white background; recommended for email signatures because it stays readable in dark mode | 400 px | 200 px |
+| `logo-navy` | Full logo on its own solid navy panel; reads correctly on both light and dark backgrounds | 312 px | 156 px |
 | `logo-dark` | Full logo, for a dark background | 400 px | 200 px |
 | `icon` | Icon or monogram only | 160 px | 80 px |
 | `divider` | Thin brand-coloured line used between sections of a signature | 520 × 6 px | 260 × 3 px |
@@ -80,7 +91,9 @@ https://snookylagoon.github.io/brand-assets/logos/<company-slug>/<file-name>.png
 
 This repository is **public**. Anyone on the internet can read every file in it.
 
-- **Allowed:** logo PNG files, `index.html`, `README.md`, `.nojekyll`.
+- **Allowed:** logo PNG files, `index.html`, `README.md`, `.nojekyll`, and finished
+  email-signature pages under `signatures/` (name, job title, business email and
+  business phone only — the same details every signed email already discloses).
 - **Not allowed:** anything else — no personal data, no documents, no spreadsheets,
   no contracts, no credentials, no API keys, no `.env` files, no draft artwork.
 
