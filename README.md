@@ -25,7 +25,8 @@ in someone else's inbox, and the logo turns into a broken-image placeholder.
 ├── index.html                Preview page: every logo, its URL and a copy button
 ├── README.md                 This file
 ├── signatures/
-│   └── andrew-scott.html     Ready-made signature + install guide for one person
+│   ├── andrew-scott.html     Ready-made signature + install guide for one person
+│   └── ian-tamplin.html      Ready-made signature + install guide for one person
 └── logos/
     ├── marcus-solomon/
     │   ├── marcus-solomon-logo.png
